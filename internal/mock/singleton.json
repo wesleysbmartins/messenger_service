@@ -1,0 +1,36 @@
+[
+    {
+        "recipient": {
+            "id": "USER_ID"
+        },
+        "message": {
+            "text": "ping"
+        }
+},
+{
+        "recipient": {
+            "id": "USER_ID"
+        },
+        "message": {
+            "attachment": {
+                "type": "template",
+                "payload": {
+                    "template_type": "button",
+                    "text": "O que você gostaria de fazer a seguir?",
+                    "buttons": [
+                        {
+                            "type": "postback",
+                            "title": "Começar",
+                            "payload": "START_PAYLOAD"
+                        },
+                        {
+                            "type": "postback",
+                            "title": "Ajuda",
+                            "payload": "HELP_PAYLOAD"
+                        }
+                    ]
+                }
+            }
+        }
+    }
+]

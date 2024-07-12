@@ -1,0 +1,88 @@
+{
+	"info": {
+		"_postman_id": "fc5201a1-ba5c-49c9-b2f5-aae4a99400f8",
+		"name": "Messenger Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17242953"
+	},
+	"item": [
+		{
+			"name": "Health Check",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{env}}/",
+					"protocol": "http",
+					"host": [
+						"{{env}}"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Webhook",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"PAGE_ID\",\r\n    \"time\": 1458692752478,\r\n    \"messaging\": [\r\n        {\r\n            \"sender\": {\r\n                \"id\": \"USER_ID\"\r\n            },\r\n            \"recipient\":{\r\n                \"id\": \"PAGE_ID\"\r\n            },\r\n            \"timestamp\": 1762902671,\r\n            \"postback\": {\r\n                \"mid\":\"mid.1457764197618:41d102a3e1ae206a38\",\r\n                \"payload\": \"START_PAYLOAD\"\r\n            }\r\n        }\r\n    ]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{env}}/webhook",
+					"protocol": "http",
+					"host": [
+						"{{env}}"
+					],
+					"path": [
+						"webhook"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Meta",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"PAGE_ID\",\r\n    \"time\": 1458692752478,\r\n    \"messaging\": [\r\n        {\r\n            \"sender\": {\r\n                \"id\": \"USER_ID\"\r\n            },\r\n            \"recipient\":{\r\n                \"id\": \"PAGE_ID\"\r\n            },\r\n            \"timestamp\": 1762902671,\r\n            \"postback\": {\r\n                \"mid\":\"mid.1457764197618:41d102a3e1ae206a38\",\r\n                \"payload\": \"START_PAYLOAD\"\r\n            }\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{env}}/meta",
+					"protocol": "http",
+					"host": [
+						"{{env}}"
+					],
+					"path": [
+						"meta"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "env",
+			"value": "localhost:8000"
+		}
+	]
+}

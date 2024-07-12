@@ -13,7 +13,7 @@ import (
 )
 
 func healthCheck(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintln(w, "Hello world")
+	fmt.Fprintln(w, "Dracarys!")
 }
 
 func meta(w http.ResponseWriter, r *http.Request) {

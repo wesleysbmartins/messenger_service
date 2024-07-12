@@ -24,7 +24,9 @@ Esta é uma aplicação API REST desenvolvida em Golang, que simula a integraç�
 
 <details>
     <summary>Fluxo</summary>
+O fluxo da aplicação depende de interações de um sestema externo, que faz o envio de mensagens a nossa api, no endpoint esperado, neste momento nossa aoi recebe a mensagem, realiza uma validação para definir a resposta, e armazena em nosso banco de dados MongoDB.
 
+Dentro do período determinado a aplicação buscará no banco de dados as mensagens que recebemos e que ainda não enviamos respostas, e faz o envio das respostas pendentes.
 ![Arquitetura](./resources/arch.png)
 </details>
 

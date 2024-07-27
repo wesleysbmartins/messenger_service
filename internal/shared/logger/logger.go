@@ -2,8 +2,8 @@ package logger
 
 import (
 	"fmt"
-	"messenger_service/internal/adapters/ioutil"
 	"messenger_service/internal/shared/console"
+	"messenger_service/pkg/ioutil"
 	"os"
 	"os/exec"
 	"strconv"

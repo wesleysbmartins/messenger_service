@@ -42,11 +42,11 @@ Para executar a aplicação será necessário ter o [Docker](https://docs.docker
 Supondo que a essa altura já tenha instalado o Docker em seu ambiente, abra seu terminal e execute os comandos a seguir.
 
 Baixe a imagem do MongoDB:
-```json
+```shell
 docker pull mongo
 ```
 Execute o MongoDB em um conteiner Docker:
-```json
+```shell
 docker run -d --name mongodb_container -e MONGO_INITDB_ROOT_USERNAME=<seu usuário> -e MONGO_INITDB_ROOT_PASSWORD=<sua senha> -e MONGO_INITDB_DATABASE=<nome do banco> -p 27017:27017 mongo:latest
 ```
 Pronto, MongoDB preparado para trabalhar!
@@ -56,7 +56,7 @@ Pronto, MongoDB preparado para trabalhar!
     <summary>Variáveis de Ambiente</summary>
 
 Nesta etapa será necessário que criar um arquivo .env na raiz do projeto ou renomear o arquivo .env.example, para preencher as informações esperadas pela aplicação, por exemplo:
-```json
+```env
 #porta da aplicação
 PORT="8000"
 #origens habilitadas
@@ -93,11 +93,11 @@ META_TOKEN="token"
 
 ### Execução da Aplicação
 Crie a imagem da aplicação com o seguinte comando:
-```json
+```shell
 docker build -t messenger_service .
 ```
 Execute a Aplicação com o comando:
-```json
+```shell
 docker run -p 8000:8000 -v "$(pwd)/logs:/app/logs" messenger_service
 ```
 

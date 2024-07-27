@@ -18,6 +18,7 @@ Esta é uma aplicação API REST desenvolvida em Golang, que simula a integraç�
 - Usecases
 - Gateways
 - Entities
+- Adapters
 - Clean Archtecture
 - Clean Code
 </details>

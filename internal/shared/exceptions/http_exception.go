@@ -18,5 +18,5 @@ func (e *HttpException) Handle(message string, resp *http.Response, err error) {
 
 	toLog := fmt.Sprintf("Context: HTTP\nURL: %s\nSTATUS: %s STATUS CODE: %s\nError: %s", resp.Request.URL, resp.Status, strconv.Itoa(resp.StatusCode), err)
 
-	log.Read("HTTP EXCEPTION", toLog)
+	log.Write("HTTP EXCEPTION", toLog)
 }

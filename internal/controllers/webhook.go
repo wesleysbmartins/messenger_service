@@ -14,13 +14,21 @@ func Webhook(w http.ResponseWriter, r *http.Request) {
 	json.NewDecoder(r.Body).Decode(&message)
 
 	log := &logger.Logger{}
-	log.Read("Message Received", message)
+	log.Write("Message Received", message)
 
 	err := usecases.ReceiveMessage(*message)
 
 	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(http.StatusInternalServerError)
+		msg := fmt.Sprintf("Failed To Proccess Message!\nERROR: %s", err)
+		json.NewEncoder(w).Encode(msg)
+		log.Write(msg, message)
+	} else {
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(http.StatusOK)
+		msg := "Message Received With Success!"
+		json.NewEncoder(w).Encode(msg)
+		log.Write(msg, message)
 	}
-
-	fmt.Fprintln(w, http.StatusText(200))
 }

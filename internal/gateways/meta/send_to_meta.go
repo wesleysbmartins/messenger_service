@@ -2,8 +2,8 @@ package gateways
 
 import (
 	"errors"
+	"messenger_service/internal/adapters/http"
 	"messenger_service/internal/entities"
-	"messenger_service/internal/services/http"
 	"messenger_service/internal/shared/exceptions"
 	"os"
 )

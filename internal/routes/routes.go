@@ -34,7 +34,7 @@ func meta(w http.ResponseWriter, r *http.Request) {
 	}
 
 	log := &logger.Logger{}
-	log.Read("Meta Received", valueToLog)
+	log.Write("Meta Received", valueToLog)
 
 	fmt.Fprintln(w, "Meta Received")
 }

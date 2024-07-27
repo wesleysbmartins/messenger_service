@@ -2,7 +2,7 @@ package logger
 
 import (
 	"fmt"
-	"messenger_service/internal/services/ioutil"
+	"messenger_service/internal/adapters/ioutil"
 	"messenger_service/internal/shared/console"
 	"os"
 	"os/exec"
@@ -20,7 +20,7 @@ var loggerInfos Logger
 
 type ILogger interface {
 	Load()
-	Read(message string, details any)
+	Write(message string, details any)
 	getPath(now time.Time) string
 	resolvePath(path string) bool
 }
@@ -36,7 +36,7 @@ func (l *Logger) Load() {
 	fmt.Println("LOGGER LOAD SUCESS!")
 }
 
-func (l *Logger) Read(message string, details any) {
+func (l *Logger) Write(message string, details any) {
 	ioutil := &ioutil.IoUtil{}
 	console := &console.Console{}
 

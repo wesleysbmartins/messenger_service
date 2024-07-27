@@ -1,14 +1,14 @@
 package main
 
 import (
+	database "messenger_service/internal/adapters/database/mongo"
+	"messenger_service/internal/adapters/server"
 	gateways "messenger_service/internal/gateways/meta"
 	"messenger_service/internal/mock"
-	database "messenger_service/internal/services/database/mongo"
-	"messenger_service/internal/services/dotenv"
-	"messenger_service/internal/services/http"
-	"messenger_service/internal/services/server"
 	"messenger_service/internal/shared/logger"
 	usecases "messenger_service/internal/usecases/send"
+	"messenger_service/pkg/dotenv"
+	"messenger_service/pkg/http"
 )
 
 func init() {

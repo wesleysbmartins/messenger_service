@@ -1,21 +1,17 @@
 package usecases
 
 import (
-	"context"
 	"messenger_service/internal/entities"
 	"messenger_service/internal/mock"
-	mongo "messenger_service/internal/services/database/mongo/operations"
-
-	"go.mongodb.org/mongo-driver/bson/primitive"
+	"messenger_service/internal/repository"
 )
 
 func ReceiveMessage(message entities.MessageReceived) error {
-	database := &mongo.MongoOperations{}
+	repository := &repository.EventRepository{}
 
 	event := &entities.Event{}
 	event.Received = message
 	event.Status = entities.Received
-	event.Id = primitive.NewObjectID()
 
 	for i := 0; i < len(message.Messaging); i++ {
 		msg := message.Messaging[i]
@@ -39,8 +35,7 @@ func ReceiveMessage(message entities.MessageReceived) error {
 		}
 	}
 
-	ctx := context.TODO()
-	err := database.Insert(ctx, event)
+	err := repository.Create(*event)
 
 	return err
 }

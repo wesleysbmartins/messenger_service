@@ -20,5 +20,5 @@ func (e *DatabaseException) Handle(ctx context.Context, operation string, filter
 
 	toLog := fmt.Sprintf("Context: %s\nMessage: %s\nOperation: %s\nFilter: %s\nValue: %s\nError: %s\n", context, message, operation, filter, value, err)
 
-	log.Read("DATABASE EXCEPTION", toLog)
+	log.Write("DATABASE EXCEPTION", toLog)
 }

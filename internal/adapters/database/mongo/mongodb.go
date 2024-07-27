@@ -10,31 +10,27 @@ import (
 )
 
 type MongoDB struct {
-	port            string
-	host            string
-	user            string
-	password        string
-	collection_name string
-	database_name   string
-	Collection      *mongo.Collection
+	host     string
+	port     string
+	user     string
+	password string
+	database string
 }
 
 type IMongoDB interface {
 	Connect()
 }
 
-var Mongo *MongoDB
+var Database *mongo.Database
 
 func (m *MongoDB) Connect() {
-
-	if Mongo == nil {
+	if Database == nil {
 		credentials := &MongoDB{
-			user:            os.Getenv("MONGO_USER"),
-			password:        os.Getenv("MONGO_PASSWORD"),
-			collection_name: os.Getenv("MONGO_COLLECTION"),
-			database_name:   os.Getenv("MONGO_DATABASE"),
-			port:            os.Getenv("MONGO_PORT"),
-			host:            os.Getenv("MONGO_HOST"),
+			user:     os.Getenv("MONGO_USER"),
+			password: os.Getenv("MONGO_PASSWORD"),
+			database: os.Getenv("MONGO_DATABASE"),
+			port:     os.Getenv("MONGO_PORT"),
+			host:     os.Getenv("MONGO_HOST"),
 		}
 
 		uri := fmt.Sprintf("mongodb://%s:%s@%s:%s/", credentials.user, credentials.password, credentials.host, credentials.port)
@@ -57,8 +53,7 @@ func (m *MongoDB) Connect() {
 			panic(err)
 		}
 
-		credentials.Collection = client.Database(credentials.database_name).Collection(credentials.collection_name)
-		Mongo = credentials
+		Database = client.Database(credentials.database)
 
 		fmt.Println("DATABASE CONNECTION SUCCESS!")
 	}
